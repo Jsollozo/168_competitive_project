@@ -1,21 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehaviour : MonoBehaviour
 {
 
     public List<GameObject> m_Lanes;
 
+    public Image m_HealthBar;
+
+    [SerializeField] private float m_MaxHealth = 100f;
+
+    [SerializeField] private float m_CurrentHealth;
+
     protected int m_Position = 1;
 
     protected float m_AttackRange = 50f;
 
+    protected float m_Damage = 5f;
+
+
+    void Awake()
+    {
+        m_CurrentHealth = m_MaxHealth;
+        m_Position = 1;
+        MovePlayer();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        m_Position = 1;
-        MovePlayer();   
+
     }
 
     // Update is called once per frame
@@ -51,7 +67,26 @@ public class PlayerBehaviour : MonoBehaviour
         if (Physics.Raycast(shotRay, out hitInfo, m_AttackRange))
         {
             Debug.Log("Hit");
+            hitInfo.transform.GetComponent<PlayerBehaviour>().TakeDamage(m_Damage);
         }
+    }
+
+    public void TakeDamage(float amount)
+    {
+        m_CurrentHealth -= amount;
+
+        m_HealthBar.fillAmount = m_CurrentHealth/m_MaxHealth;
+
+        if (m_CurrentHealth <= 0)
+        {
+            Die();
+        }
+
+    }
+
+    public void Die()
+    {
+        Debug.Log("I'm dead");
     }
 
     private void MovePlayer()
