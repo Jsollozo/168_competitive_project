@@ -13,6 +13,8 @@ public class RightPlayer : PlayerBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateChargeColor();
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             MoveUp();

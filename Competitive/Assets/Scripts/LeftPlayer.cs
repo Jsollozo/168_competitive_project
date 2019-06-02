@@ -13,6 +13,8 @@ public class LeftPlayer : PlayerBehaviour
     // Update is called once per frame
     void Update()
     {
+        UpdateChargeColor();
+
         if (Input.GetKeyDown(KeyCode.W))
         {
             MoveUp();

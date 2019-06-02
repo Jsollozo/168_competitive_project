@@ -10,6 +10,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public Image m_HealthBar;
 
+    public Image m_ChargeBar;
+
     [SerializeField] private float m_MaxHealth = 100f;
 
     [SerializeField] private float m_CurrentHealth;
@@ -33,6 +35,7 @@ public class PlayerBehaviour : MonoBehaviour
         m_CurrentHealth = m_MaxHealth;
         m_Position = 1;
         MovePlayer();
+        ResetCharge();
     }
 
     // Start is called before the first frame update
@@ -47,17 +50,35 @@ public class PlayerBehaviour : MonoBehaviour
         
     }
 
-    public void Charge()
+    public void UpdateChargeColor()
     {
-        if(m_cooldownTimer <= Time.time && m_ChargeMultiplier <= m_MaxCharge)
+        if (m_cooldownTimer <= Time.time)
         {
-            m_ChargeMultiplier += Time.deltaTime/2;
+            if (m_ChargeBar.color != Color.cyan)
+                m_ChargeBar.color = Color.cyan;
+        }
+        else
+        {
+            m_ChargeBar.color = Color.red;
+        }
+    }
+
+        public void Charge()
+    {
+        if(m_cooldownTimer <= Time.time)
+        {
+            if (m_ChargeMultiplier <= m_MaxCharge)
+            {
+                m_ChargeMultiplier += Time.deltaTime / 2;
+                m_ChargeBar.fillAmount = m_ChargeMultiplier / m_MaxCharge;
+            }
         }
     }
 
     public void ResetCharge()
     {
         m_ChargeMultiplier = 1;
+        m_ChargeBar.fillAmount = m_ChargeMultiplier / m_MaxCharge;
     }
 
     public void MoveUp()
