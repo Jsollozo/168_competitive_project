@@ -23,9 +23,15 @@ public class RightPlayer : PlayerBehaviour
             MoveDown();
         }
 
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if(Input.GetKey(KeyCode.RightArrow))
+        {
+            Charge();
+        }
+
+        if (Input.GetKeyUp(KeyCode.RightArrow))
         {
             Shoot(transform.right * -1);
+            ResetCharge();
         }
     }
 }

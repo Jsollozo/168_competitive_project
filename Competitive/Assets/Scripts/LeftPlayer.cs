@@ -23,9 +23,15 @@ public class LeftPlayer : PlayerBehaviour
             MoveDown();
         }
 
-        if(Input.GetKeyDown(KeyCode.A))
+        if(Input.GetKey(KeyCode.A))
+        {
+            Charge();
+        }
+
+        if (Input.GetKeyUp(KeyCode.A))
         {
             Shoot(transform.right);
+            ResetCharge();
         }
     }
 }

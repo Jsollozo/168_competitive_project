@@ -14,12 +14,19 @@ public class PlayerBehaviour : MonoBehaviour
 
     [SerializeField] private float m_CurrentHealth;
 
+    [SerializeField] float m_ChargeMultiplier = 1f;
+
+    [SerializeField] float m_MaxCharge = 5f;
+
+    [SerializeField] float m_CooldownInSeconds = 3f;
+
     protected int m_Position = 1;
 
     protected float m_AttackRange = 50f;
 
     protected float m_Damage = 5f;
 
+    private float m_cooldownTimer = 0;
 
     void Awake()
     {
@@ -38,6 +45,19 @@ public class PlayerBehaviour : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Charge()
+    {
+        if(m_cooldownTimer <= Time.time && m_ChargeMultiplier <= m_MaxCharge)
+        {
+            m_ChargeMultiplier += Time.deltaTime/2;
+        }
+    }
+
+    public void ResetCharge()
+    {
+        m_ChargeMultiplier = 1;
     }
 
     public void MoveUp()
@@ -60,14 +80,19 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void Shoot(Vector3 direction)
     {
-        Ray shotRay = new Ray(transform.position, direction);
-        Debug.DrawRay(shotRay.origin, shotRay.direction * m_AttackRange, Color.red, 1f);
-
-        RaycastHit hitInfo;
-        if (Physics.Raycast(shotRay, out hitInfo, m_AttackRange))
+        if(m_cooldownTimer <= Time.time)
         {
-            Debug.Log("Hit");
-            hitInfo.transform.GetComponent<PlayerBehaviour>().TakeDamage(m_Damage);
+            Ray shotRay = new Ray(transform.position, direction);
+            Debug.DrawRay(shotRay.origin, shotRay.direction * m_AttackRange, Color.red, 1f);
+            RaycastHit hitInfo;
+
+            if (Physics.Raycast(shotRay, out hitInfo, m_AttackRange))
+            {
+                Debug.Log("Hit");
+                hitInfo.transform.GetComponent<PlayerBehaviour>().TakeDamage(m_Damage * m_ChargeMultiplier);
+            }
+
+            m_cooldownTimer = Time.time + m_CooldownInSeconds * m_ChargeMultiplier;
         }
     }
 
