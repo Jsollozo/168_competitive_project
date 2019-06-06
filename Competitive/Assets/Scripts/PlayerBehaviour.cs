@@ -30,6 +30,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private float m_cooldownTimer = 0;
 
+    protected bool m_IsPaused = true;
+
     void Awake()
     {
         m_CurrentHealth = m_MaxHealth;
@@ -47,7 +49,12 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    public void TogglePause()
+    {
+        m_IsPaused = !m_IsPaused;
     }
 
     public void UpdateChargeColor()
