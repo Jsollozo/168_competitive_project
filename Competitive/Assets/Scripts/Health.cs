@@ -11,6 +11,8 @@ public class Health : MonoBehaviour
 
     [SerializeField] private float m_CurrentHealth;
 
+    [SerializeField] GameObject m_LastHitBy;
+
     void Awake()
     {
         ResetHealth();
@@ -46,8 +48,14 @@ public class Health : MonoBehaviour
 
     }
 
+    public void SetLastHit(GameObject go)
+    {
+        m_LastHitBy = go;
+    }
+
     public void Die()
     {
         Debug.Log("I'm dead");
+        Destroy(this.gameObject);
     }
 }

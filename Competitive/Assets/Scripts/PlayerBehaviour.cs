@@ -8,13 +8,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     public List<GameObject> m_Lanes;
 
-    //public Image m_HealthBar;
-
     public Image m_ChargeBar;
-
-    //[SerializeField] private float m_MaxHealth = 100f;
-
-    //[SerializeField] private float m_CurrentHealth;
 
     [SerializeField] float m_ChargeMultiplier = 1f;
 
@@ -34,7 +28,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     void Awake()
     {
-        //m_CurrentHealth = m_MaxHealth;
         m_Position = 1;
         MovePlayer();
         ResetCharge();
@@ -117,31 +110,15 @@ public class PlayerBehaviour : MonoBehaviour
             if (Physics.Raycast(shotRay, out hitInfo, m_AttackRange))
             {
                 Debug.Log("Hit");
-                hitInfo.transform.GetComponent<Health>().TakeDamage(m_Damage * m_ChargeMultiplier);
+                Health objectHit = hitInfo.transform.GetComponent<Health>();
+                objectHit.TakeDamage(m_Damage * m_ChargeMultiplier);
+                objectHit.SetLastHit(this.gameObject);
+
             }
 
             m_cooldownTimer = Time.time + m_CooldownInSeconds * m_ChargeMultiplier;
         }
     }
-
-    /*
-    public void TakeDamage(float amount)
-    {
-        m_CurrentHealth -= amount;
-
-        m_HealthBar.fillAmount = m_CurrentHealth/m_MaxHealth;
-
-        if (m_CurrentHealth <= 0)
-        {
-            Die();
-        }
-
-    }
-
-    public void Die()
-    {
-        Debug.Log("I'm dead");
-    }*/
 
     private void MovePlayer()
     {
