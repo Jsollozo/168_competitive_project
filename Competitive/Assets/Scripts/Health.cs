@@ -7,11 +7,11 @@ public class Health : MonoBehaviour
 {
     public Image m_HealthBar;
 
-    [SerializeField] private float m_MaxHealth = 100f;
+    [SerializeField] protected float m_MaxHealth = 100f;
 
-    [SerializeField] private float m_CurrentHealth;
+    [SerializeField] protected float m_CurrentHealth;
 
-    [SerializeField] GameObject m_LastHitBy;
+    [SerializeField] protected GameObject m_LastHitBy;
 
     void Awake()
     {
@@ -48,12 +48,24 @@ public class Health : MonoBehaviour
 
     }
 
+    public void Heal(float amount)
+    {
+        m_CurrentHealth += amount;
+
+        if(m_CurrentHealth > m_MaxHealth)
+        {
+            m_CurrentHealth = m_MaxHealth;
+        }
+
+        m_HealthBar.fillAmount = m_CurrentHealth / m_MaxHealth;
+    }
+
     public void SetLastHit(GameObject go)
     {
         m_LastHitBy = go;
     }
 
-    public void Die()
+    public virtual void Die()
     {
         Debug.Log("I'm dead");
         Destroy(this.gameObject);

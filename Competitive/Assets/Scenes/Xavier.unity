@@ -3399,7 +3399,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ItemSpawnTime: 7
-  obj: {fileID: 753308831779929215, guid: 96abc44378eac4347a250032d5f52b47, type: 3}
+  objs:
+  - {fileID: 2061297277911491838, guid: f0d31a965b45a444f9a0aad20bc2b5c5, type: 3}
+  - {fileID: 753308831779929215, guid: 96abc44378eac4347a250032d5f52b47, type: 3}
 --- !u!1 &2125598988
 GameObject:
   m_ObjectHideFlags: 0

@@ -111,8 +111,9 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 Debug.Log("Hit");
                 Health objectHit = hitInfo.transform.GetComponent<Health>();
-                objectHit.TakeDamage(m_Damage * m_ChargeMultiplier);
+
                 objectHit.SetLastHit(this.gameObject);
+                objectHit.TakeDamage(m_Damage * m_ChargeMultiplier);
 
             }
 
