@@ -912,7 +912,7 @@ RectTransform:
   m_GameObject: {fileID: 499159203}
   m_LocalRotation: {x: 0.31966153, y: -0, z: -0, w: 0.9475319}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.007550892, y: 0.011836552, z: 0.011836552}
+  m_LocalScale: {x: 0.0075482493, y: 0.011836552, z: 0.011836552}
   m_Children:
   - {fileID: 1407220015}
   m_Father: {fileID: 183230550}
@@ -920,7 +920,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 37.285004, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -1.5, y: 0}
+  m_AnchoredPosition: {x: -1.76, y: 0}
   m_SizeDelta: {x: 748, y: 421}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &499159205
@@ -1721,6 +1721,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1761,7 +1762,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 69.9469
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1793,6 +1794,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 40.221, y: 0, z: 0}
+--- !u!45 &963194229
+Skybox:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 81f714daf7144784b8a2f42f1cd30927, type: 2}
 --- !u!1001 &1048460037
 PrefabInstance:
   m_ObjectHideFlags: 0
