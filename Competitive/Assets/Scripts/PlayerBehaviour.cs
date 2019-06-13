@@ -117,7 +117,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             }
 
-            m_cooldownTimer = Time.time + m_CooldownInSeconds * m_ChargeMultiplier;
+            m_cooldownTimer = Time.time + m_CooldownInSeconds * m_ChargeMultiplier/2;
         }
     }
 
