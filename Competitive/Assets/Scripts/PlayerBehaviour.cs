@@ -14,7 +14,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     [SerializeField] float m_MaxCharge = 5f;
 
-    [SerializeField] float m_CooldownInSeconds = 3f;
+    [SerializeField] float m_CooldownInSeconds = 1.5f;
 
     protected int m_Position = 1;
 
