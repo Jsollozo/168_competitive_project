@@ -11,6 +11,7 @@ public class MenuScript : MonoBehaviour
 
     void Awake()
     {
+        TogglePauseOnPlayers();
     }
 
     // Start is called before the first frame update
@@ -24,21 +25,9 @@ public class MenuScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            controlsPanel.SetActive(true);
-            TogglePause();
+            Open();
         }
-        else if (Input.GetButtonDown("Resume"))
-        {
-            TogglePause();
-        }
-        else if (Input.GetButtonDown("Instruction"))
-        {
-            ToggleInstructions();
-        }
-        else if (Input.GetButtonDown("Quit"))
-        {
-            ToggleQuit();
-        }
+
     }
 
     public void TogglePause()

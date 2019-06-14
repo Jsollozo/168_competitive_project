@@ -22,10 +22,10 @@ public class ControlsMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
-        {
-            TogglePause();
-        }
+        //if(Input.GetButtonDown("Cancel"))
+        //{
+            //TogglePause();
+        //}
     }
 
     private void TogglePause()
