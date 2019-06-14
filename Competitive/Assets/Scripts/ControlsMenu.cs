@@ -10,7 +10,7 @@ public class ControlsMenu : MonoBehaviour
 
     void Awake()
     {
-        controlsPanel.SetActive(true);
+        //controlsPanel.SetActive(true);
     }
 
     // Start is called before the first frame update
@@ -44,7 +44,7 @@ public class ControlsMenu : MonoBehaviour
 
     public void Open()
     {
-        controlsPanel.SetActive(true);
+        //controlsPanel.SetActive(true);
         TogglePauseOnPlayers();
     }
 
