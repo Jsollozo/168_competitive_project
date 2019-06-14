@@ -25,7 +25,7 @@ public class MenuScript : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            Open();
+            TogglePause();
         }
 
     }
