@@ -41,7 +41,7 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    private void TogglePause()
+    public void TogglePause()
     {
         m_IsPaused = !m_IsPaused;
 
@@ -55,12 +55,12 @@ public class MenuScript : MonoBehaviour
         }
     }
 
-    private void ToggleInstructions()
+    public void ToggleInstructions()
     {
         instructions.SetActive(true);
     }
 
-    private void ToggleQuit()
+    public void ToggleQuit()
     {
         Application.Quit();
     }
