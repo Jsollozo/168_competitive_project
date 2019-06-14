@@ -58,6 +58,7 @@ public class MenuScript : MonoBehaviour
     public void ToggleInstructions()
     {
         instructions.SetActive(true);
+        controlsPanel.SetActive(false);
     }
 
     public void ToggleQuit()
